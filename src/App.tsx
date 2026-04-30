@@ -100,7 +100,7 @@ const getAI = () => {
 const COLORS = ["#10B981", "#3B82F6", "#8B5CF6", "#F59E0B", "#EF4444", "#EC4899", "#64748b", "#06b6d4"];
 
 const FAMILY_MEMBERS_FULL = ["Zulay", "Albert", "Miguel", "Gabriel", "Cristian"];
-const FAMILY_MEMBERS_INITIAL: string[] = [];
+const FAMILY_MEMBERS_INITIAL = ["Zulay", "Albert", "Miguel", "Gabriel", "Cristian"];
 
 const MONTHS = [
   "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
@@ -259,9 +259,7 @@ export default function App() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
 
-  // Falla 1: Atribución de gastos vinculada a Zulay, Albert, Miguel, Gabriel y Cristian
-  const FAMILY_MEMBERS_FULL = useMemo(() => ["Zulay", "Albert", "Miguel", "Gabriel", "Cristian"], []);
-  
+
   const handleGoogleLogin = async () => {
     setIsLoggingIn(true);
     setLoginError(null);
@@ -799,8 +797,8 @@ export default function App() {
   }>({
     lugar: "",
     fecha: getLocalDateString(),
-    comprador: "Cristian Duran",
-    pagador: "Cristian Duran",
+    comprador: "Cristian",
+    pagador: "Cristian",
     items: [{ nombre: "", precio: "", cantidad: "1", precioUnitario: "", categoria: "Otros", subcategoria: null }]
   });
 
