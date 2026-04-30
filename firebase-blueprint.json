@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "UserConfig": {
+      "title": "User Configuration",
+      "description": "User specific settings and local preferences",
+      "type": "object",
+      "properties": {
+        "categories": { "type": "array", "items": { "type": "string" } },
+        "subcategoryMappings": { "type": "object" },
+        "manualApiKey": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Expense": {
+      "title": "Expense Record",
+      "description": "A single receipt or manual expense entry",
+      "type": "object",
+      "properties": {
+        "transaccion": { "type": "object" },
+        "productos": { "type": "array" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Budget": {
+      "title": "Monthly Budget",
+      "description": "Budget allocations per family member for a specific month",
+      "type": "object",
+      "properties": {
+        "periodKey": { "type": "string" },
+        "allocations": { "type": "object" },
+        "userId": { "type": "string" }
+      }
+    },
+    "WaterRecord": {
+      "title": "Water Purchase",
+      "description": "Log of water bottle purchases",
+      "type": "object",
+      "properties": {
+        "fecha": { "type": "string" },
+        "comprador": { "type": "string" },
+        "cantidad": { "type": "number" },
+        "precioTotal": { "type": "number" },
+        "userId": { "type": "string" }
+      }
+    },
+    "Contribution": {
+      "title": "Family Contribution",
+      "description": "Contribution data for the dashboard summary",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "amount": { "type": "number" },
+        "color": { "type": "string" },
+        "userId": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserConfig",
+      "description": "Base user document containing settings"
+    },
+    "/users/{userId}/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Collection of all expenses for the user"
+    },
+    "/users/{userId}/budgets/{periodKey}": {
+      "schema": "Budget",
+      "description": "Monthly budget allocations"
+    },
+    "/users/{userId}/waterRecords/{recordId}": {
+      "schema": "WaterRecord",
+      "description": "Collection of water logs"
+    },
+    "/users/{userId}/contributions/{contributionId}": {
+      "schema": "Contribution",
+      "description": "Collection of person-specific contributions"
+    }
+  }
+}

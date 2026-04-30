@@ -1,0 +1,6 @@
+{
+  "name": "GastoGenie",
+  "description": "Analizador de boletas y recibos con IA para el control de gastos hogareños.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

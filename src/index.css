@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  --color-bg-principal: var(--bg-principal);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+}
+
+:root {
+  /* Common */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  
+  /* Light Theme (Default) */
+  --bg-principal: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --primary: #059669;
+  --primary-hover: #047857;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+}
+
+.dark {
+  --bg-principal: #1e293b; /* Slate 800 */
+  --bg-card: #0f172a;      /* Slate 900 */
+  --text-main: #f8fafc;    /* Slate 50 */
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --accent: #60a5fa;
+}
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-bg-principal: var(--bg-principal);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  --color-primary-theme: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-danger-theme: var(--danger);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-principal);
+    color: var(--text-main);
+    @apply transition-colors duration-300 antialiased;
+  }
+
+  /* Reset de Tipografía: Obliga herencia de las variables de tema */
+  h1, h2, h3, h4, h5, h6, p, span, div, th, td {
+    color: inherit;
+  }
+}
+
+/* Bento Utilities */
+.card-bento {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  @apply rounded-3xl border p-6 flex flex-col shadow-sm transition-all duration-300;
+}
+
+.contenedor-boleta {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card-label-bento {
+  color: var(--text-secondary);
+  @apply text-[11px] uppercase tracking-wider font-bold mb-2;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Base Input Styles */
+input, select {
+  @apply transition-all duration-200;
+}
+
+/* Hide number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Improvement for dark mode inputs - only for those that aren't explicitly transparent */
+.dark input:not(.bg-transparent), .dark select:not(.bg-transparent) {
+  @apply bg-slate-800 border-slate-700 text-slate-100;
+}
+
+.dark input::placeholder {
+  @apply text-slate-500;
+}
+
+.dark input:focus {
+  @apply border-emerald-500 ring-emerald-500/20;
+}
+
+/* Custom Cropper Styles to match video aesthetic */
+.custom-cropper {
+  --rc-grid-color: rgba(255, 255, 255, 0.4);
+  --rc-handle-size: 10px;
+  --rc-handle-color: #ffffff;
+}
+
+.ReactCrop__rule-of-thirds-vt::before,
+.ReactCrop__rule-of-thirds-vt::after,
+.ReactCrop__rule-of-thirds-hz::before,
+.ReactCrop__rule-of-thirds-hz::after {
+  background-color: var(--rc-grid-color) !important;
+}
+
+.ReactCrop__drag-handle::after {
+  background-color: var(--rc-handle-color) !important;
+  width: var(--rc-handle-size) !important;
+  height: var(--rc-handle-size) !important;
+  border: 1px solid rgba(0,0,0,0.3) !important;
+  border-radius: 2px !important;
+}
